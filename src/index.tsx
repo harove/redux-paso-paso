@@ -5,24 +5,31 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { compose, createStore } from "redux";
 
-const initialState = {
-  data: [{}],
+const initialState: any = {
+  data: [],
 };
+
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION__?: typeof compose;
+  }
+}
 
 const reducerList = (prevState = initialState, action: any) => {
   switch (action.type) {
     case "USER_CREATE":
-      return {
-        data: [...prevState.data, action.payload],
-      };
+      return { ...prevState, data: [...prevState.data, action.payload] };
     default:
       return prevState;
   }
 };
 
-const store = createStore(reducerList);
+const store = createStore(
+  reducerList,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <React.StrictMode>
