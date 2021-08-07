@@ -1,4 +1,5 @@
 import { createStore, combineReducers, compose } from "redux";
+import loginReducer from "./login";
 import productReducer from "./products";
 import userReducer from "./users";
 
@@ -10,7 +11,8 @@ declare global {
 
 const rootReducer = combineReducers({
   users: userReducer,
-  products: productReducer
+  products: productReducer,
+  login: loginReducer
 });
 
 const store = createStore(
