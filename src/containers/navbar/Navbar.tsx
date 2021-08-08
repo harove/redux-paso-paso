@@ -7,7 +7,6 @@ import "./menu.css";
 const Menu = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector((state: any) => state.login.isLogin);
-  debugger
 
   return <nav className="container navbar navbar-expand-lg navbar-light bg-light">
   <div className="container">
@@ -45,6 +44,16 @@ const Menu = () => {
 			to="/products"
 		  >
 			List
+		  </NavLink>
+		</li>
+		<li className="nav-item">
+		  <NavLink
+			exact
+			activeClassName="selected"
+			className="nav-link"
+			to="/pokemon"
+		  >
+			Pokemones
 		  </NavLink>
 		</li>
 		<li className="nav-item">

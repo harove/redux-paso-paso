@@ -5,6 +5,7 @@ import "./App.css";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Login from "./containers/login/Login";
 import Navbar from "./containers/navbar/Navbar";
+import PokemonList from "./containers/pokemon-list/PokemonList";
 import ProductCreate from "./containers/product-create/ProductCreate";
 import ProductDetail from "./containers/product-detail/ProductDetail";
 import ProductList from "./containers/product-list/ProductList";
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route path="/products" exact>
           <ProductList />
+        </Route>
+        <Route path="/pokemon" exact>
+          <PokemonList />
         </Route>
         <PrivateRoute isLogin={isLogin} path="/products/create" component={ProductCreate}/>
         {/* <Route path="/products/create">

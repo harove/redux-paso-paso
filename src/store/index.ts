@@ -1,5 +1,7 @@
-import { createStore, combineReducers, compose } from "redux";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import loginReducer from "./login";
+import pokemonReducer from "./pokemon";
 import productReducer from "./products";
 import userReducer from "./users";
 
@@ -12,11 +14,15 @@ declare global {
 const rootReducer = combineReducers({
   users: userReducer,
   products: productReducer,
-  login: loginReducer
+  login: loginReducer,
+  pokemon: pokemonReducer
 });
 
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  compose(
+    applyMiddleware(thunk),
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );
 export default store;
