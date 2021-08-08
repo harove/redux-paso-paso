@@ -3,11 +3,10 @@ import { useDispatch } from 'react-redux'
 import { pokemonFetch } from '../../store/pokemon/actions'
 
 const PokemonList = () => {
-    const dispatch = useDispatch()
-        
+    const dispatch = useDispatch()    
+
     useEffect(() => {
         dispatch(pokemonFetch())       
-
     }, [])
 
     return (

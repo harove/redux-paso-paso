@@ -2,17 +2,17 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { logoutAction } from "../../store/login/actions";
-import "./menu.css";
+import "./navbar.css";
 
 const Menu = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector((state: any) => state.login.isLogin);
 
-  return <nav className="container navbar navbar-expand-lg navbar-light bg-light">
+  return <nav className="container navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <div className="container">
-	<Link className="navbar-brand" to="/">
+	{/* <Link className="navbar-brand" to="/">
 	  <img src="./../../frutas.PNG" alt="logo" width="60px" />
-	</Link>
+	</Link> */}
 	<button
 	  className="navbar-toggler"
 	  type="button"
