@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { deleteProductAction } from "../../store/products/actions";
 
 const ProductList = () => {
-  const productList = useSelector((state:any)=>state.products.data);
+  const productList = useSelector((state: any) => state.products.data);
+  const isLogin = useSelector((state: any) => state.login.isLogin);
   const dispatch = useDispatch();
-  
+
   const handlerDelete = (id: any) => {
     dispatch(deleteProductAction(id));
   };
@@ -37,22 +38,20 @@ const ProductList = () => {
                   {productList.map((u: any) => (
                     <tr key={u.id}>
                       <td>
-                        <div
-                          className="badge bg-dark"
-                        >
-                          {u.id}
-                        </div>
+                        <div className="badge bg-dark">{u.id}</div>
                       </td>
                       <td>{u.name}</td>
                       <td>{u.price}</td>
                       <td className="text-end">
                         <div className="btn-group">
-                          <button
-                            className="btn btn-sm btn-danger"
-                            onClick={() => handlerDelete(u.id)}
-                          >
-                            eliminar
-                          </button>
+                          {isLogin ? (
+                            <button
+                              className="btn btn-sm btn-danger"
+                              onClick={() => handlerDelete(u.id)}
+                            >
+                              eliminar
+                            </button>
+                          ) : null}
                           <Link
                             className="btn btn-sm btn-primary"
                             to={`/products/detail/${u.id}`}

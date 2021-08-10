@@ -43,7 +43,7 @@ const Menu = () => {
 			className="nav-link"
 			to="/products"
 		  >
-			List
+			Products
 		  </NavLink>
 		</li>
 		<li className="nav-item">
